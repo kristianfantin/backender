@@ -2,10 +2,12 @@ package com.glovoapp.backender.domain.rule;
 
 import com.glovoapp.backender.domain.Courier;
 import com.glovoapp.backender.domain.Order;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class HideRuleDescription {
 
     private static final List<String> LIST_OF_EXCEPTIONS = Arrays.asList("pizza","cake","flamingo");
@@ -24,6 +26,6 @@ public class HideRuleDescription {
     }
 
     private boolean isDescriptionRule(Order order, String description) {
-        return order.getDescription().contains(description);
+        return order.getDescription().toUpperCase().contains(description.toUpperCase());
     }
 }
