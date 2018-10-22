@@ -44,4 +44,20 @@ class HideRuleDescriptionTest {
         assertTrue(new HideRuleDescription().validate(order, courier));
     }
 
+    @Test
+    void invalidCourier() {
+        Courier courier = new CourierRepository().findById("courier-999");
+        Order order = new OrderRepository().findById("order-3");
+
+        assertFalse(new HideRuleDescription().validate(order, courier));
+    }
+
+    @Test
+    void invalidOrder() {
+        Courier courier = new CourierRepository().findById("courier-1");
+        Order order = new OrderRepository().findById("order-999");
+
+        assertFalse(new HideRuleDescription().validate(order, courier));
+    }
+
 }

@@ -6,18 +6,27 @@ import com.glovoapp.backender.domain.rule.HideRuleFurther;
 import com.glovoapp.backender.repositories.CourierRepository;
 import com.glovoapp.backender.repositories.OrderRepository;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
 class HideRuleFurtherTest {
+
+    @Autowired
+    private HideRuleFurther hideRuleFurther;
 
     @Test
     void validateCourier1AndOrder1() {
         Courier courier = new CourierRepository().findById("courier-1");
         Order order = new OrderRepository().findById("order-1");
 
-        assertTrue(new HideRuleFurther().validate(order, courier));
+        assertTrue(hideRuleFurther.validate(order, courier));
     }
 
     @Test
@@ -25,7 +34,7 @@ class HideRuleFurtherTest {
         Courier courier = new CourierRepository().findById("courier-1");
         Order order = new OrderRepository().findById("order-2");
 
-        assertTrue(new HideRuleFurther().validate(order, courier));
+        assertTrue(hideRuleFurther.validate(order, courier));
     }
 
     @Test
@@ -33,7 +42,7 @@ class HideRuleFurtherTest {
         Courier courier = new CourierRepository().findById("courier-1");
         Order order = new OrderRepository().findById("order-3");
 
-        assertTrue(new HideRuleFurther().validate(order, courier));
+        assertTrue(hideRuleFurther.validate(order, courier));
     }
 
     @Test
@@ -41,7 +50,7 @@ class HideRuleFurtherTest {
         Courier courier = new CourierRepository().findById("courier-2");
         Order order = new OrderRepository().findById("order-1");
 
-        assertTrue(new HideRuleFurther().validate(order, courier));
+        assertTrue(hideRuleFurther.validate(order, courier));
     }
 
     @Test
@@ -49,7 +58,7 @@ class HideRuleFurtherTest {
         Courier courier = new CourierRepository().findById("courier-2");
         Order order = new OrderRepository().findById("order-2");
 
-        assertTrue(new HideRuleFurther().validate(order, courier));
+        assertTrue(hideRuleFurther.validate(order, courier));
     }
 
     @Test
@@ -57,7 +66,7 @@ class HideRuleFurtherTest {
         Courier courier = new CourierRepository().findById("courier-2");
         Order order = new OrderRepository().findById("order-3");
 
-        assertTrue(new HideRuleFurther().validate(order, courier));
+        assertTrue(hideRuleFurther.validate(order, courier));
     }
 
     @Test
@@ -65,7 +74,7 @@ class HideRuleFurtherTest {
         Courier courier = new CourierRepository().findById("courier-3");
         Order order = new OrderRepository().findById("order-1");
 
-        assertTrue(new HideRuleFurther().validate(order, courier));
+        assertTrue(hideRuleFurther.validate(order, courier));
     }
 
     @Test
@@ -73,7 +82,7 @@ class HideRuleFurtherTest {
         Courier courier = new CourierRepository().findById("courier-3");
         Order order = new OrderRepository().findById("order-2");
 
-        assertTrue(new HideRuleFurther().validate(order, courier));
+        assertTrue(hideRuleFurther.validate(order, courier));
     }
 
     @Test
@@ -81,7 +90,23 @@ class HideRuleFurtherTest {
         Courier courier = new CourierRepository().findById("courier-3");
         Order order = new OrderRepository().findById("order-3");
 
-        assertFalse(new HideRuleFurther().validate(order, courier));
+        assertFalse(hideRuleFurther.validate(order, courier));
+    }
+
+    @Test
+    void invalidCourier() {
+        Courier courier = new CourierRepository().findById("courier-999");
+        Order order = new OrderRepository().findById("order-3");
+
+        assertFalse(hideRuleFurther.validate(order, courier));
+    }
+
+    @Test
+    void invalidOrder() {
+        Courier courier = new CourierRepository().findById("courier-1");
+        Order order = new OrderRepository().findById("order-999");
+
+        assertFalse(hideRuleFurther.validate(order, courier));
     }
 
 }

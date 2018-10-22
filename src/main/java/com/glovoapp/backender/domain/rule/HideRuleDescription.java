@@ -11,14 +11,18 @@ import java.util.List;
 public class HideRuleDescription {
 
     private static final List<String> LIST_OF_EXCEPTIONS = Arrays.asList("pizza","cake","flamingo");
+    private static final boolean PATTERN_RESULT = false;
 
     public boolean validate(Order order, Courier courier) {
-        for (String description : LIST_OF_EXCEPTIONS) {
-            if (isDescriptionRule(order, description) && !isEquippedWithGlovoBox(courier)) {
-                return false;
-            }
-        }
-        return true;
+        return (isInputNull(order, courier)) ?
+                PATTERN_RESULT :
+                LIST_OF_EXCEPTIONS
+                        .stream()
+                        .noneMatch(description -> isDescriptionRule(order, description) && !isEquippedWithGlovoBox(courier));
+    }
+
+    private boolean isInputNull(Order order, Courier courier) {
+        return order == null || courier == null;
     }
 
     private Boolean isEquippedWithGlovoBox(Courier courier) {

@@ -2,9 +2,9 @@ package com.glovoapp.backender.controller;
 
 import com.glovoapp.backender.domain.Courier;
 import com.glovoapp.backender.domain.Order;
-import com.glovoapp.backender.domain.OrderVM;
 import com.glovoapp.backender.domain.rule.HideRuleDescription;
 import com.glovoapp.backender.domain.rule.HideRuleFurther;
+import com.glovoapp.backender.domain.viewer.OrderVM;
 import com.glovoapp.backender.repositories.CourierRepository;
 import com.glovoapp.backender.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
