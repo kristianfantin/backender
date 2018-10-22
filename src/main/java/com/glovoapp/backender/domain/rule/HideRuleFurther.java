@@ -11,7 +11,7 @@ public class HideRuleFurther {
 
     public boolean validate(Order order, Courier courier) {
         Double distance = DistanceCalculator.calculateDistance(courier.getLocation(), order.getDelivery());
-        return distance > FURTHER_THAN && !isMotorcycleOrEletricScooter(courier);
+        return !(distance > FURTHER_THAN && !isMotorcycleOrEletricScooter(courier));
     }
 
     private boolean isMotorcycleOrEletricScooter(Courier courier) {
