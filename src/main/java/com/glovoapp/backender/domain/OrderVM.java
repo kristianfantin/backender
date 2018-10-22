@@ -1,4 +1,4 @@
-package com.glovoapp.backender;
+package com.glovoapp.backender.domain;
 
 /**
  * To be used for exposing order information through the API

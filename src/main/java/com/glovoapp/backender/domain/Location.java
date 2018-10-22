@@ -1,21 +1,21 @@
-package com.glovoapp.backender;
+package com.glovoapp.backender.domain;
 
 import java.util.Objects;
 
-class Location {
+public class Location {
     private Double lat;
     private Double lon;
 
-    Location(Double lat, Double lon) {
+    public Location(Double lat, Double lon) {
         this.lat = lat;
         this.lon = lon;
     }
 
-    Double getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    Double getLon() {
+    public Double getLon() {
         return lon;
     }
 

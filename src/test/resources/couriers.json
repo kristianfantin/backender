@@ -8,5 +8,25 @@
       "lat": 41.3965463,
       "lon": 2.1963997
     }
+  },
+  {
+    "id": "courier-2",
+    "name": "Elza Mike",
+    "box": false,
+    "vehicle": "BICYCLE",
+    "location": {
+      "lat": 41.38005925397267,
+      "lon": 2.16826435705024
+    }
+  },
+  {
+    "id": "courier-3",
+    "name": "Nina Garcia",
+    "box": false,
+    "vehicle": "BICYCLE",
+    "location": {
+      "lat": 41.3925603,
+      "lon": 2.1418532
+    }
   }
 ]
