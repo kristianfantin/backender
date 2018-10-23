@@ -39,6 +39,13 @@ class OrdersControllerTest {
         List<OrderVM> orderVMList = controller.ordersByCourierId("courier-3");
 
         assertTrue(orders.size() > orderVMList.size());
+
+        Double distance = Double.valueOf(0);
+        for (OrderVM orderVM : orderVMList) {
+            assertTrue(orderVM.getDistance() >= distance);
+            distance = orderVM.getDistance();
+        }
+
     }
 
 }

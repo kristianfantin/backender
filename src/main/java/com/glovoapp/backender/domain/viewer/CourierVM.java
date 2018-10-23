@@ -4,8 +4,6 @@ import com.glovoapp.backender.domain.type.Vehicle;
 
 public class CourierVM {
 
-    protected CourierVM() {}
-
     private String id;
     private String name;
     private Boolean box;

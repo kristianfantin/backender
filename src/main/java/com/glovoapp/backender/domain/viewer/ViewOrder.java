@@ -1,26 +1,29 @@
 package com.glovoapp.backender.domain.viewer;
 
+import com.glovoapp.backender.domain.Courier;
+import com.glovoapp.backender.domain.Order;
+
 public class ViewOrder {
 
-    private CourierVM courier;
-    private OrderVM order;
+    private Courier courier;
+    private Order order;
     private Double distance;
     private Boolean vip;
     private Boolean food;
 
-    public CourierVM getCourier() {
+    public Courier getCourier() {
         return courier;
     }
 
-    public void setCourier(CourierVM courier) {
+    public void setCourier(Courier courier) {
         this.courier = courier;
     }
 
-    public OrderVM getOrder() {
+    public Order getOrder() {
         return order;
     }
 
-    public void setOrder(OrderVM order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 

@@ -6,10 +6,12 @@ package com.glovoapp.backender.domain.viewer;
 public class OrderVM {
     private String id;
     private String description;
+    private Double distance;
 
-    public OrderVM(String id, String description) {
+    public OrderVM(String id, String description, Double distance) {
         this.id = id;
         this.description = description;
+        this.distance = distance;
     }
 
     public String getId() {
@@ -18,5 +20,9 @@ public class OrderVM {
 
     public String getDescription() {
         return description;
+    }
+
+    public Double getDistance() {
+        return distance;
     }
 }

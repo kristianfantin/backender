@@ -28,7 +28,7 @@ public class Order {
         return this;
     }
 
-    Boolean getFood() {
+    public Boolean getFood() {
         return food;
     }
 
@@ -37,7 +37,7 @@ public class Order {
         return this;
     }
 
-    Boolean getVip() {
+    public Boolean getVip() {
         return vip;
     }
 
