@@ -2,3 +2,5 @@ backender:
   welcome_message: "Welcome to Backender Glovo APP"
   hide_further_than_in_km: 5
   slots: "0-2;2-4;4-6"
+  words_box: "pizza;cake;flamingo"
+  order_by: ""

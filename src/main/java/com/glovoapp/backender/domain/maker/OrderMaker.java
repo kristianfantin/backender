@@ -9,10 +9,10 @@ import static com.glovoapp.backender.domain.calculator.DistanceCalculator.calcul
 public class OrderMaker {
 
     public static OrderVM toOrderVM(ViewOrder viewOrder) {
-        return new OrderVM(viewOrder.getOrder().getId(), viewOrder.getOrder().getDescription(), viewOrder.getDistance());
+        return new OrderVM(viewOrder.getOrder().getId(), viewOrder.getOrder().getDescription(), viewOrder.getDistance(), viewOrder.getVip(), viewOrder.getFood());
     }
 
     public static OrderVM toOrderVM(Order order) {
-        return new OrderVM(order.getId(), order.getDescription(), calculateDistance(order.getPickup(), order.getDelivery()));
+        return new OrderVM(order.getId(), order.getDescription(), calculateDistance(order.getPickup(), order.getDelivery()), order.getVip(), order.getFood());
     }
 }

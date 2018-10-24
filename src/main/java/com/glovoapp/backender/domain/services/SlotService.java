@@ -2,7 +2,6 @@ package com.glovoapp.backender.domain.services;
 
 import com.glovoapp.backender.domain.viewer.SlotVM;
 import com.glovoapp.backender.domain.viewer.ViewOrder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.glovoapp.backender.domain.services.OrderBy.*;
+
 @Service
 public class SlotService {
-
-    @Autowired
-    private SortService sortService;
 
     @Value("${backender.slots}")
     private String slots;
@@ -67,22 +65,22 @@ public class SlotService {
     }
 
     public List<SlotVM> getSlotsOrderByVip(List<SlotVM> list) {
-        list.forEach(slotVM -> slotVM.setViewOrders(sortService.getSortByVip(slotVM.getViewOrders())));
+        list.forEach(slotVM -> slotVM.setViewOrders(VIP.getSort(slotVM.getViewOrders())));
         return list;
     }
 
     public List<SlotVM> getSlotsOrderByFood(List<SlotVM> list) {
-        list.forEach(slotVM -> slotVM.setViewOrders(sortService.getSortByFood(slotVM.getViewOrders())));
+        list.forEach(slotVM -> slotVM.setViewOrders(FOOD.getSort(slotVM.getViewOrders())));
         return list;
     }
 
     public List<SlotVM> getSlotsOrderByVidAndFood(List<SlotVM> list) {
-        list.forEach(slotVM -> slotVM.setViewOrders(sortService.getSortByVipAndFood(slotVM.getViewOrders())));
+        list.forEach(slotVM -> slotVM.setViewOrders(VIP_FOOD.getSort(slotVM.getViewOrders())));
         return list;
     }
 
     public List<SlotVM> getSlotsOrderByFoodAndVip(List<SlotVM> list) {
-        list.forEach(slotVM -> slotVM.setViewOrders(sortService.getSortByFoodAndVip(slotVM.getViewOrders())));
+        list.forEach(slotVM -> slotVM.setViewOrders(FOOD_VIP.getSort(slotVM.getViewOrders())));
         return list;
     }
 }

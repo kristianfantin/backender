@@ -2,22 +2,24 @@ package com.glovoapp.backender.domain.rule;
 
 import com.glovoapp.backender.domain.Courier;
 import com.glovoapp.backender.domain.Order;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-import java.util.List;
 
 @Component
 public class HideRuleDescription {
 
-    private static final List<String> LIST_OF_EXCEPTIONS = Arrays.asList("pizza","cake","flamingo");
+    @Value("${backender.words_box}")
+    private String wordsBox;
+
     private static final boolean PATTERN_RESULT = false;
 
     public boolean validate(Order order, Courier courier) {
         return (isInputNull(order, courier)) ?
                 PATTERN_RESULT :
-                LIST_OF_EXCEPTIONS
-                        .stream()
+                Arrays
+                        .stream(wordsBox.split(";"))
                         .noneMatch(description -> isDescriptionRule(order, description) && !isEquippedWithGlovoBox(courier));
     }
 

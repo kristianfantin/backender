@@ -1,9 +1,7 @@
 package com.glovoapp.backender.controller;
 
-import com.glovoapp.backender.domain.maker.CourierMaker;
 import com.glovoapp.backender.domain.maker.OrderMaker;
 import com.glovoapp.backender.domain.services.OrdersService;
-import com.glovoapp.backender.domain.viewer.CourierVM;
 import com.glovoapp.backender.domain.viewer.OrderVM;
 import com.glovoapp.backender.repositories.CourierRepository;
 import com.glovoapp.backender.repositories.OrderRepository;
@@ -37,15 +35,6 @@ public class OrdersController {
         return orderRepository.findAll()
                 .stream()
                 .map(OrderMaker::toOrderVM)
-                .collect(Collectors.toList());
-    }
-
-    @GetMapping("/couriers")
-    @ResponseBody
-    public List<CourierVM> couriers() {
-        return courierRepository.findAll()
-                .stream()
-                .map(CourierMaker::toCourierVM)
                 .collect(Collectors.toList());
     }
 
