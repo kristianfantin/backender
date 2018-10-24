@@ -54,5 +54,59 @@ class SlotVMTest {
         List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderBy(courierRepository.findById("courier-1"));
         List<SlotVM> list = slotService.getSlots(viewOrderList);
 
+        SlotVM slotOne = list.get(0);
+        assertEquals(4, slotOne.getViewOrders().size());
+        SlotVMAssertVip.assertsBeforeOrderByVip(slotOne);
+
+        List<SlotVM> listOrderByVip = slotService.getSlotsOrderByVip(list);
+        slotOne = listOrderByVip.get(0);
+        assertEquals(4, slotOne.getViewOrders().size());
+        SlotVMAssertVip.assertsAfterOrderByVip(slotOne);
     }
+
+    @Test
+    void shouldOrderByFood() {
+        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderBy(courierRepository.findById("courier-1"));
+        List<SlotVM> list = slotService.getSlots(viewOrderList);
+
+        SlotVM slotOne = list.get(0);
+        assertEquals(4, slotOne.getViewOrders().size());
+        SlotVMAssertFood.assertsBeforeOrderByFood(slotOne);
+
+        List<SlotVM> listOrderByVip = slotService.getSlotsOrderByFood(list);
+        slotOne = listOrderByVip.get(0);
+        assertEquals(4, slotOne.getViewOrders().size());
+        SlotVMAssertFood.assertsAfterOrderByFood(slotOne);
+    }
+
+    @Test
+    void shouldOrderByVipAndFood() {
+        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderBy(courierRepository.findById("courier-1"));
+        List<SlotVM> list = slotService.getSlots(viewOrderList);
+
+        SlotVM slotOne = list.get(0);
+        assertEquals(4, slotOne.getViewOrders().size());
+        SlotVMAssertVipAndFood.assertsBeforeOrderByVipAndFood(slotOne);
+
+        List<SlotVM> listOrderByVip = slotService.getSlotsOrderByVidAndFood(list);
+        slotOne = listOrderByVip.get(0);
+        assertEquals(4, slotOne.getViewOrders().size());
+        SlotVMAssertVipAndFood.assertsAfterOrderByVipAndFood(slotOne);
+    }
+
+    @Test
+    void shouldOrderByFoodAndVip() {
+        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderBy(courierRepository.findById("courier-1"));
+        List<SlotVM> list = slotService.getSlots(viewOrderList);
+
+        SlotVM slotOne = list.get(0);
+        assertEquals(4, slotOne.getViewOrders().size());
+        SlotVMAssertFoodAndVip.assertsBeforeOrderByFoodAndVip(slotOne);
+
+        List<SlotVM> listOrderByVip = slotService.getSlotsOrderByFoodAndVip(list);
+        slotOne = listOrderByVip.get(0);
+        assertEquals(4, slotOne.getViewOrders().size());
+        SlotVMAssertFoodAndVip.assertsAfterOrderByFoodAndVip(slotOne);
+    }
+
 }

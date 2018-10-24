@@ -43,7 +43,7 @@
   },
   {
     "description": "An adult flamingo",
-    "food": true,
+    "food": false,
     "vip": true,
     "delivery": {
       "lat": 41.390386700874885,
@@ -72,7 +72,7 @@
   {
     "description": "2x Pizza with Fries\n1x Hot dog with Fries\n2x Hot dog with Fries\n1x Hot dog with Fries",
     "food": true,
-    "vip": false,
+    "vip": true,
     "delivery": {
       "lat": 41.38559840054907,
       "lon": 2.1813393854927394

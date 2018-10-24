@@ -26,10 +26,12 @@ public class OrdersService {
     @Autowired
     private HideRuleFurther hideRuleFurther;
 
+    @Autowired
+    private SortService sortService;
+
     public List<ViewOrder> getViewOrdersOrderBy(Courier courier) {
         List<ViewOrder> newOrderList = getViewOrders(courier);
-        getSortByDistance(newOrderList);
-        return newOrderList;
+        return getSortByDistance(newOrderList);
     }
 
     private List<ViewOrder> getViewOrders(Courier courier) {
@@ -39,8 +41,8 @@ public class OrdersService {
                 .collect(Collectors.toList());
     }
 
-    private void getSortByDistance(List<ViewOrder> newOrderList) {
-        newOrderList.sort((ViewOrder order1, ViewOrder order2) -> order1.getDistance().compareTo(order2.getDistance()));
+    private List<ViewOrder> getSortByDistance(List<ViewOrder> newOrderList) {
+        return sortService.getSortByDistance(newOrderList);
     }
 
     private ViewOrder getViewOrder(Courier courier, Order order) {
