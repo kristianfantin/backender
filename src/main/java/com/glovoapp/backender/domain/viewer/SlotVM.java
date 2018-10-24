@@ -1,6 +1,5 @@
 package com.glovoapp.backender.domain.viewer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SlotVM {
@@ -25,19 +24,11 @@ public class SlotVM {
         this.finalDistance = finalDistance;
     }
 
+    public void setViewOrders(List<ViewOrder> viewOrders) {
+        this.viewOrders = viewOrders;
+    }
+
     public List<ViewOrder> getViewOrders() {
-        if (viewOrders == null)
-            return new ArrayList<>();
         return viewOrders;
     }
-
-    public void setViewOrders(ViewOrder viewOrder) {
-        this.viewOrders = getViewOrders(viewOrder);
-    }
-
-    private List<ViewOrder> getViewOrders(ViewOrder viewOrder) {
-        getViewOrders().add(viewOrder);
-        return getViewOrders();
-    }
-
 }

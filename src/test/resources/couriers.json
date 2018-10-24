@@ -28,5 +28,15 @@
       "lat": 41.3925603,
       "lon": 2.1418532
     }
+  },
+  {
+    "id": "courier-4",
+    "name": "Esteban Golson",
+    "box": true,
+    "vehicle": "ELECTRIC_SCOOTER",
+    "location": {
+      "lat": 41.39087699632735,
+      "lon": 2.1784116992018028
+    }
   }
 ]

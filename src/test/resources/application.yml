@@ -1,4 +1,4 @@
 backender:
   welcome_message: "Welcome to Backender Glovo APP"
   hide_further_than_in_km: 5
-  slots: "0-0.5;0.5-1;1-1.5"
+  slots: "0-2;2-4;4-6"
