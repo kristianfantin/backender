@@ -1,11 +1,14 @@
 package com.glovoapp.backender.controller;
 
 import com.glovoapp.backender.domain.maker.CourierMaker;
-import com.glovoapp.backender.domain.services.SlotService;
+import com.glovoapp.backender.domain.maker.OrderMaker;
+import com.glovoapp.backender.domain.services.OrdersService;
 import com.glovoapp.backender.domain.viewer.CourierVM;
 import com.glovoapp.backender.domain.viewer.OrderVM;
 import com.glovoapp.backender.repositories.CourierRepository;
 import com.glovoapp.backender.repositories.OrderRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,8 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.glovoapp.backender.domain.calculator.DistanceCalculator.calculateDistance;
-
+@Api(tags = { "ordersController" })
 @RestController
 public class OrdersController {
 
@@ -27,14 +29,14 @@ public class OrdersController {
     private CourierRepository courierRepository;
 
     @Autowired
-    private SlotService slotService;
+    private OrdersService ordersService;
 
     @GetMapping("/orders")
     @ResponseBody
     public List<OrderVM> orders() {
         return orderRepository.findAll()
                 .stream()
-                .map(order -> new OrderVM(order.getId(), order.getDescription(), calculateDistance(order.getPickup(), order.getDelivery())))
+                .map(OrderMaker::toOrderVM)
                 .collect(Collectors.toList());
     }
 
@@ -47,12 +49,13 @@ public class OrdersController {
                 .collect(Collectors.toList());
     }
 
+    @ApiOperation(value = "Orders find by Id of Courier")
     @GetMapping("/orders/{courierId}")
     @ResponseBody
     public List<OrderVM> ordersByCourierId(@RequestParam String courierId) {
-        return slotService.getViewOrdersOrderBy(courierRepository.findById(courierId))
+        return ordersService.getViewOrdersOrderBy(courierRepository.findById(courierId))
                 .stream()
-                .map(order -> new OrderVM(order.getOrder().getId(), order.getOrder().getDescription(), order.getDistance()))
+                .map(OrderMaker::toOrderVM)
                 .collect(Collectors.toList());
     }
 
