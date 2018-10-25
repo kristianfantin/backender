@@ -38,7 +38,7 @@ class SlotVMTest {
 
     @Test
     void shouldDivideInSlots() {
-        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderBy(courierRepository.findById("courier-1"));
+        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderByDistance(courierRepository.findById("courier-1"));
         List<SlotVM> list = slotService.getSlots(viewOrderList);
         assertTrue(list.size() > 1);
 
@@ -52,7 +52,7 @@ class SlotVMTest {
 
     @Test
     void shouldOrderByVip() {
-        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderBy(courierRepository.findById("courier-1"));
+        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderByDistance(courierRepository.findById("courier-1"));
         List<SlotVM> list = slotService.getSlots(viewOrderList);
 
         SlotVM slotOne = list.get(0);
@@ -67,7 +67,7 @@ class SlotVMTest {
 
     @Test
     void shouldOrderByFood() {
-        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderBy(courierRepository.findById("courier-1"));
+        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderByDistance(courierRepository.findById("courier-1"));
         List<SlotVM> list = slotService.getSlots(viewOrderList);
 
         SlotVM slotOne = list.get(0);
@@ -82,7 +82,7 @@ class SlotVMTest {
 
     @Test
     void shouldOrderByVipAndFood() {
-        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderBy(courierRepository.findById("courier-1"));
+        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderByDistance(courierRepository.findById("courier-1"));
         List<SlotVM> list = slotService.getSlots(viewOrderList);
 
         SlotVM slotOne = list.get(0);
@@ -97,7 +97,7 @@ class SlotVMTest {
 
     @Test
     void shouldOrderByFoodAndVip() {
-        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderBy(courierRepository.findById("courier-1"));
+        List<ViewOrder> viewOrderList = ordersService.getViewOrdersOrderByDistance(courierRepository.findById("courier-1"));
         List<SlotVM> list = slotService.getSlots(viewOrderList);
 
         SlotVM slotOne = list.get(0);

@@ -30,7 +30,7 @@ public class OrdersService {
     @Autowired
     private SortByDistanceService sortByDistanceService;
 
-    public List<ViewOrder> getViewOrdersOrderBy(Courier courier) {
+    public List<ViewOrder> getViewOrdersOrderByDistance(Courier courier) {
         List<ViewOrder> newOrderList = getViewOrders(courier);
         return sortByDistanceService.getSort(newOrderList);
     }

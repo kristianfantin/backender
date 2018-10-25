@@ -53,7 +53,7 @@ public class OrdersController {
     @GetMapping("/orders/{courierId}")
     @ResponseBody
     public List<OrderVM> ordersByCourierId(@RequestParam String courierId) {
-        List<ViewOrder> orders = ordersService.getViewOrdersOrderBy(courierRepository.findById(courierId));
+        List<ViewOrder> orders = ordersService.getViewOrdersOrderByDistance(courierRepository.findById(courierId));
         List<SlotVM> slotsOrdered = getSlotsOrdered(orders);
 
         if (slotsOrdered.isEmpty())

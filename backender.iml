@@ -64,7 +64,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-spi:2.9.2" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-core:2.9.2" level="project" />
-    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.7.11" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-schema:2.9.2" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-swagger-common:2.9.2" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-spring-web:2.9.2" level="project" />
@@ -80,5 +79,10 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.0.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:5.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.0.5.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-junit-jupiter:2.21.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:2.15.0" level="project" />
+    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.7.11" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy-agent:1.7.11" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:2.6" level="project" />
   </component>
 </module>
