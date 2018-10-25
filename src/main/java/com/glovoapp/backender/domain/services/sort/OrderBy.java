@@ -13,10 +13,12 @@ public enum OrderBy {
     FOOD_VIP(SortByFoodAndVipService.class);
 
     public static OrderBy getValue(String value) {
-        if (value.equals("VIP") || value.equals("FOOD") || value.equals("VIP_FOOD") || value.equals("FOOD_VIP"))
+        try {
             return valueOf(value);
-
-        return null;
+        }
+        catch (Exception e) {
+            return null;
+        }
     }
 
     public List<SlotVM> getSlots(List<SlotVM> list) {
