@@ -54,8 +54,12 @@ public class OrdersController {
     @ResponseBody
     public List<OrderVM> ordersByCourierId(@RequestParam String courierId) {
         List<ViewOrder> orders = ordersService.getViewOrdersOrderBy(courierRepository.findById(courierId));
+        List<SlotVM> slotsOrdered = getSlotsOrdered(orders);
 
-        return getSlotsOrdered(orders)
+        if (slotsOrdered.isEmpty())
+            return orders.stream().map(OrderMaker::toOrderVM).collect(Collectors.toList());
+
+        return slotsOrdered
                 .stream()
                 .flatMap(slotVM -> slotVM.getViewOrders().stream())
                 .map(OrderMaker::toOrderVM)

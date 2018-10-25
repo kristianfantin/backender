@@ -20,6 +20,9 @@ public class SlotService {
     private int index = 0;
 
     public List<SlotVM> getSlotVM() {
+        if (slots == null || slots.trim().length() == 0)
+            return new ArrayList<>();
+
         String[] split = slots.split(";");
         return Arrays
                 .stream(split)

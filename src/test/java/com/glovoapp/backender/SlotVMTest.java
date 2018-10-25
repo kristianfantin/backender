@@ -59,7 +59,7 @@ class SlotVMTest {
         assertEquals(4, slotOne.getViewOrders().size());
         SlotVMAssertVip.assertsBeforeOrderByVip(slotOne);
 
-        List<SlotVM> listOrderByVip = OrderBy.VIP.getSlots(list);// sortByVipService.getSlots(list);
+        List<SlotVM> listOrderByVip = OrderBy.VIP.getSlots(list);
         slotOne = listOrderByVip.get(0);
         assertEquals(4, slotOne.getViewOrders().size());
         SlotVMAssertVip.assertsAfterOrderByVip(slotOne);
