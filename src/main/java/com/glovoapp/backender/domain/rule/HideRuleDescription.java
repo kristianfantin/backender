@@ -19,8 +19,8 @@ public class HideRuleDescription {
         return (isInputNull(order, courier)) ?
                 PATTERN_RESULT :
                 Arrays
-                        .stream(wordsBox.split(";"))
-                        .noneMatch(description -> isDescriptionRule(order, description) && !isEquippedWithGlovoBox(courier));
+                    .stream(wordsBox.split(";"))
+                    .noneMatch(description -> isDescriptionRule(order, description) && !isEquippedWithGlovoBox(courier));
     }
 
     private boolean isInputNull(Order order, Courier courier) {

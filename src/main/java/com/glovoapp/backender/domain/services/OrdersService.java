@@ -4,10 +4,10 @@ import com.glovoapp.backender.domain.Courier;
 import com.glovoapp.backender.domain.Order;
 import com.glovoapp.backender.domain.rule.HideRuleDescription;
 import com.glovoapp.backender.domain.rule.HideRuleFurther;
+import com.glovoapp.backender.domain.services.sort.SortByDistanceService;
 import com.glovoapp.backender.domain.viewer.ViewOrder;
 import com.glovoapp.backender.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,22 +28,12 @@ public class OrdersService {
     private HideRuleFurther hideRuleFurther;
 
     @Autowired
-    private SortByDistanceService sortService;
-
-    @Value("${backender.order_by}")
-    private String orderBy;
+    private SortByDistanceService sortByDistanceService;
 
     public List<ViewOrder> getViewOrdersOrderBy(Courier courier) {
         List<ViewOrder> newOrderList = getViewOrders(courier);
-        List<ViewOrder> sortByDistance = sortService.getSort(newOrderList);
-
-        OrderBy orderByParam = OrderBy.getValue(orderBy);
-        if (orderByParam == null)
-            return sortByDistance;
-
-        return orderByParam.getSort(sortByDistance);
+        return sortByDistanceService.getSort(newOrderList);
     }
-
 
     private List<ViewOrder> getViewOrders(Courier courier) {
         return getOrders(courier)

@@ -2,6 +2,7 @@ package com.glovoapp.backender;
 
 import com.glovoapp.backender.domain.services.OrdersService;
 import com.glovoapp.backender.domain.services.SlotService;
+import com.glovoapp.backender.domain.services.sort.OrderBy;
 import com.glovoapp.backender.domain.viewer.SlotVM;
 import com.glovoapp.backender.domain.viewer.ViewOrder;
 import com.glovoapp.backender.repositories.CourierRepository;
@@ -58,7 +59,7 @@ class SlotVMTest {
         assertEquals(4, slotOne.getViewOrders().size());
         SlotVMAssertVip.assertsBeforeOrderByVip(slotOne);
 
-        List<SlotVM> listOrderByVip = slotService.getSlotsOrderByVip(list);
+        List<SlotVM> listOrderByVip = OrderBy.VIP.getSlots(list);// sortByVipService.getSlots(list);
         slotOne = listOrderByVip.get(0);
         assertEquals(4, slotOne.getViewOrders().size());
         SlotVMAssertVip.assertsAfterOrderByVip(slotOne);
@@ -73,7 +74,7 @@ class SlotVMTest {
         assertEquals(4, slotOne.getViewOrders().size());
         SlotVMAssertFood.assertsBeforeOrderByFood(slotOne);
 
-        List<SlotVM> listOrderByVip = slotService.getSlotsOrderByFood(list);
+        List<SlotVM> listOrderByVip = OrderBy.FOOD.getSlots(list);
         slotOne = listOrderByVip.get(0);
         assertEquals(4, slotOne.getViewOrders().size());
         SlotVMAssertFood.assertsAfterOrderByFood(slotOne);
@@ -88,7 +89,7 @@ class SlotVMTest {
         assertEquals(4, slotOne.getViewOrders().size());
         SlotVMAssertVipAndFood.assertsBeforeOrderByVipAndFood(slotOne);
 
-        List<SlotVM> listOrderByVip = slotService.getSlotsOrderByVidAndFood(list);
+        List<SlotVM> listOrderByVip = OrderBy.VIP_FOOD.getSlots(list);
         slotOne = listOrderByVip.get(0);
         assertEquals(4, slotOne.getViewOrders().size());
         SlotVMAssertVipAndFood.assertsAfterOrderByVipAndFood(slotOne);
@@ -103,7 +104,7 @@ class SlotVMTest {
         assertEquals(4, slotOne.getViewOrders().size());
         SlotVMAssertFoodAndVip.assertsBeforeOrderByFoodAndVip(slotOne);
 
-        List<SlotVM> listOrderByVip = slotService.getSlotsOrderByFoodAndVip(list);
+        List<SlotVM> listOrderByVip = OrderBy.FOOD_VIP.getSlots(list);
         slotOne = listOrderByVip.get(0);
         assertEquals(4, slotOne.getViewOrders().size());
         SlotVMAssertFoodAndVip.assertsAfterOrderByFoodAndVip(slotOne);

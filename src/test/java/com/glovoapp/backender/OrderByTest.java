@@ -1,10 +1,10 @@
 package com.glovoapp.backender;
 
-import com.glovoapp.backender.domain.services.OrderBy;
+import com.glovoapp.backender.domain.services.sort.OrderBy;
 import org.junit.jupiter.api.Test;
 
-import static com.glovoapp.backender.domain.services.OrderBy.FOOD_VIP;
-import static com.glovoapp.backender.domain.services.OrderBy.VIP_FOOD;
+import static com.glovoapp.backender.domain.services.sort.OrderBy.FOOD_VIP;
+import static com.glovoapp.backender.domain.services.sort.OrderBy.VIP_FOOD;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 

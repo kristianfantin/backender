@@ -1,7 +1,7 @@
-package com.glovoapp.backender.domain.services;
+package com.glovoapp.backender.domain.services.sort;
 
 import com.glovoapp.backender.config.BeanUtil;
-import com.glovoapp.backender.domain.viewer.ViewOrder;
+import com.glovoapp.backender.domain.viewer.SlotVM;
 
 import java.util.List;
 
@@ -13,16 +13,14 @@ public enum OrderBy {
     FOOD_VIP(SortByFoodAndVipService.class);
 
     public static OrderBy getValue(String value) {
-        if (value.equals("VIP_FOOD"))
-            return VIP_FOOD;
-        if (value.equals("FOOD_VIP"))
-            return FOOD_VIP;
+        if (value.equals("VIP") || value.equals("FOOD") || value.equals("VIP_FOOD") || value.equals("FOOD_VIP"))
+            return valueOf(value);
 
         return null;
     }
 
-    List<ViewOrder> getSort(List<ViewOrder> viewOrderList) {
-        return getService().getSort(viewOrderList);
+    public List<SlotVM> getSlots(List<SlotVM> list) {
+        return getService().getSlots(list);
     }
 
     private Class clazz;

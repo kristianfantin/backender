@@ -1,14 +1,20 @@
-package com.glovoapp.backender.domain.services;
+package com.glovoapp.backender.domain.services.sort;
 
+import com.glovoapp.backender.domain.viewer.SlotVM;
 import com.glovoapp.backender.domain.viewer.ViewOrder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-class SortByVipAndFoodService implements SortService {
+public class SortByVipAndFoodService implements SortService {
 
-    public List<ViewOrder> getSort(List<ViewOrder> viewOrders) {
+    public List<SlotVM> getSlots(List<SlotVM> list) {
+        list.forEach(slotVM -> slotVM.setViewOrders(getSort(slotVM.getViewOrders())));
+        return list;
+    }
+
+    private List<ViewOrder> getSort(List<ViewOrder> viewOrders) {
         viewOrders.sort((o1, o2) -> {
             int compare = o2.getVip().compareTo(o1.getVip());
             if (compare != 0)
